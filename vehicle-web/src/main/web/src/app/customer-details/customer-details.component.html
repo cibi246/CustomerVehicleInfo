@@ -1,0 +1,25 @@
+<div *ngIf="customer">
+    <div>
+        <label>Name: </label> {{customer.name}}
+    </div>
+    <div>
+        <label>Address: </label> {{customer.address}}
+    </div>
+    <div>
+        <label>Vehicle Number: </label> {{customer.vin}}
+    </div>
+    <div>
+        <label>Reg.No: </label> {{customer.regNo}}
+    </div>
+    <div>
+        <label>Status: </label> {{customer.status}}
+    </div>
+
+    <!-- <span class="button is-small btn-primary" *ngIf='employee.active' (click)='updateActive(false)'>Inactive</span>
+
+    <span class="button is-small btn-primary" *ngIf='!employee.active' (click)='updateActive(true)'>Active</span>
+
+    <span class="button is-small btn-danger" (click)='deleteEmployee()'>Delete</span> -->
+
+    <hr/>
+</div>
