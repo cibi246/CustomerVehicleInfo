@@ -10,15 +10,22 @@ import { CustomerService } from '../customer.service';
 })
 export class CustomerListComponent implements OnInit {
 
-  customers: Observable<Customer[]>;
+  customers: Customer[];
+  interval: any;
+  searchText: string;
   constructor(private customerService: CustomerService) { }
-
   ngOnInit() {
     this.reloadData();
+     this.interval = setInterval(()=>{
+       this.reloadData();
+     },15000);
   }
 
   reloadData(){
-    this.customers = this.customerService.getCustomerList();
+     this.customerService.getCustomerList().subscribe(data=>{
+      this.customers = data;
+    });
+    
   }
 
 }

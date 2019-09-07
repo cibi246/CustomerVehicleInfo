@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchFilterPipe } from './customer-list/search-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerDetailsComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

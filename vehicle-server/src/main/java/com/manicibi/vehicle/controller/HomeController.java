@@ -3,7 +3,10 @@
  */
 package com.manicibi.vehicle.controller;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -22,6 +25,10 @@ import com.manicibi.vehicle.service.ICustomerInfoService;
 @EntityScan("com.manicibi.vehicle.model")
 public class HomeController {
 	
+	enum STATUS{ACTIVE,BUSY};
+	private static final List<STATUS> VALUES=Collections.unmodifiableList(Arrays.asList(STATUS.values()));
+	private static final int SIZE = VALUES.size();
+	  private static final Random RANDOM = new Random();
 	@Autowired
 	private ICustomerInfoService customerInfoService;
 	
@@ -37,15 +44,23 @@ public class HomeController {
 		return "My Google service is working fine in GCP environment";
 	}
 	
-	@RequestMapping(value="/customers", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/customers-info", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<CustomerInfo> findCustomers() {
         System.out.println(customerInfoService.findAll());
-        return customerInfoService.findAll();
+       List<CustomerInfo> customers = customerInfoService.findAll();
+       for(CustomerInfo customer:customers) {
+    	   customer.setStatus(randomStatus().toString());
+       }
+       return customers;
     }
 
-    @RequestMapping(value="/customers/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/customers-info/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public CustomerInfo findCustomerById(@PathVariable Integer userId) {
         System.out.println(customerInfoService.findById(userId));
         return customerInfoService.findById(userId);
     }
+    
+    public static STATUS randomStatus()  {
+        return VALUES.get(RANDOM.nextInt(SIZE));
+      }
 }

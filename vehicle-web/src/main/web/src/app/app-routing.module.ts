@@ -4,12 +4,12 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 
 
 const routes: Routes = [
-  {path:'', redirectTo:'customer', pathMatch: 'full'},
+  {path:'', redirectTo:'customers', pathMatch: 'full'},
   {path:'customers', component: CustomerListComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
