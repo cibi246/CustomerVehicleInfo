@@ -73,6 +73,7 @@
           "configurations": {
             "production": {
               "browserTarget": "vehicle-simulation-gui:build:production",
+			  "proxyConfig": "proxy.conf.json"
             }
           }
         },

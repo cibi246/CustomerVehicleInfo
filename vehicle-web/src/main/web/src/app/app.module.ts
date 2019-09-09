@@ -7,6 +7,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchFilterPipe } from './customer-list/search-filter.pipe';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { SearchFilterPipe } from './customer-list/search-filter.pipe';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
