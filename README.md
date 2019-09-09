@@ -27,5 +27,5 @@ Description: Vehicle Simulation live project
  - Create the app.yaml(gae config) and dispatch.yaml(backend config)
  - Deploy in Google app engine using Storage bucket.
 
-GAE public URL: https://vehiclesimulation.appspot.com/customers
+GAE public URL where Backend is deployed: https://vehiclesimulation.appspot.com/customers
 Please find the attached screenshot in repo for more details. 
